@@ -1,0 +1,206 @@
+10 задание
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayListPractice {
+
+    public static void main(String[] args) {
+
+        ArrayList<String> fruits = new ArrayList<>();
+        fruits.add("Яблоко");
+        fruits.add("Банан");
+        fruits.add("Апельсин");
+        fruits.add("Киви");
+        fruits.add("Манго");
+
+        System.out.println("Список фруктов:");
+        for (String fruit : fruits) {
+            System.out.println("- " + fruit);
+        }
+
+        fruits.remove(2);
+
+        System.out.println("\nПосле удаления третьего элемента:");
+        for (String fruit : fruits) {
+            System.out.println("- " + fruit);
+        }
+
+        boolean hasApple = fruits.contains("Яблоко");
+        System.out.println("\nСодержит 'Яблоко'? " + hasApple);
+
+        Collections.sort(fruits);
+        System.out.println("\nОтсортированный список:");
+        for (String fruit : fruits) {
+            System.out.println("- " + fruit);
+        }
+    }
+доп задание
+
+ArrayList<String> names = new ArrayList<>();
+names.add("Анна");
+names.add("Иван");
+names.add("Алексей");
+names.add("Мария");
+names.add("Артём");
+
+System.out.println("\nИмена, начинающиеся на 'А':");
+for (String name : names) {
+    if (name.startsWith("А")) {
+        System.out.println("- " + name);
+    }
+}
+задание 11
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class ExceptionHandlingPractice {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Введите число: ");
+            int number = scanner.nextInt();
+
+            int result = 100 / number;
+            System.out.println("Результат: " + result);
+
+        } catch (InputMismatchException e) {
+            System.out.println("Ошибка: Введите корректное число!");
+
+        } catch (ArithmeticException e) {
+            System.out.println("Ошибка: Деление на ноль невозможно!");
+
+        } finally {
+            scanner.close();
+            System.out.println("Сканнер закрыт.");
+        }
+    }
+}
+задание 13
+
+class Animal {
+    protected String name;
+    protected int age;
+
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void makeSound() {
+        System.out.println("Животное издаёт звук");
+    }
+}
+
+class Dog extends Animal {
+
+    public Dog(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Гав-гав!");
+    }
+}
+
+class Cat extends Animal {
+
+    public Cat(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Мяу!");
+    }
+}
+
+public class InheritancePractice {
+    public static void main(String[] args) {
+
+        Dog dog = new Dog("Бобик", 3);
+        Cat cat = new Cat("Мурка", 2);
+
+        dog.makeSound();
+        cat.makeSound();
+    }
+}
+доп задание 
+
+import java.util.ArrayList;
+
+class Animal {
+    String name;
+    int age;
+
+    Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void makeSound() {
+        System.out.println("Животное издаёт звук");
+    }
+
+    void info() {
+        System.out.println(name + ", " + age + " лет");
+    }
+}
+
+class Dog extends Animal {
+    String breed;
+
+    Dog(String name, int age, String breed) {
+        super(name, age);
+        this.breed = breed;
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Гав-гав!");
+    }
+}
+
+class Cat extends Animal {
+
+    Cat(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Мяу!");
+    }
+}
+
+class Bird extends Animal {
+
+    Bird(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Чирик!");
+    }
+}
+
+public class InheritancePractice {
+    public static void main(String[] args) {
+
+        ArrayList<Animal> animals = new ArrayList<>();
+
+        animals.add(new Dog("Бобик", 3, "Овчарка"));
+        animals.add(new Cat("Мурка", 2));
+        animals.add(new Bird("Кеша", 1));
+
+        for (Animal a : animals) {
+            a.info();
+            a.makeSound();
+        }
+    }
+}
